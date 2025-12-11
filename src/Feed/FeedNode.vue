@@ -5,14 +5,6 @@ import FeedType from './FeedType.vue'
 const props = defineProps({
   product: Object,
 })
-
-const onKupit = inject('onKupit')
-
-const buyProduct = () => {
-  if (onKupit && props.product.id != null) {
-    onKupit(props.product.id)
-  }
-}
 </script>
 
 <template>
@@ -24,11 +16,6 @@ const buyProduct = () => {
       </p>
     </div>
 
-    <FeedType
-      :product="product"
-      :user="product.user"
-      :meta="product.meta"
-      :kupit="buyProduct"
-    ></FeedType>
+    <FeedType :product="product" :user="product.user" :meta="product.meta"></FeedType>
   </div>
 </template>

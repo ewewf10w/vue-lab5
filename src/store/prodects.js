@@ -1,6 +1,7 @@
-import { ref } from 'vue'
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 
-export function useProducts() {
+export const useProductsStore = defineStore('products', () => {
   const products = ref([
     {
       id: 1,
@@ -70,7 +71,10 @@ export function useProducts() {
   const onKupit = (id) => {
     const product = products.value.find((i) => i.id == id)
     purchased.value.push({ ...product })
+    console.log(sum.value)
   }
 
-  return { products, purchased, onKupit }
-}
+  const sum = computed(() => purchased.value.reduce((total, product) => total + product.price, 0))
+
+  return { products, purchased, onKupit, sum }
+})

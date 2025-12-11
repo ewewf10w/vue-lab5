@@ -2,11 +2,16 @@
 import { provide } from 'vue'
 import FeedNode from './Feed/FeedNode.vue'
 import HeaderApp from './HeaderApp.vue'
-import { useProducts } from './composables/useProducts'
+import { useProductsStore } from './store/prodects'
+import { storeToRefs } from 'pinia'
 
-const { products, purchased, onKupit } = useProducts()
-provide('purchased', purchased)
-provide('onKupit', onKupit)
+const store = useProductsStore()
+const storeRef = storeToRefs(store)
+const products = storeRef.products
+
+provide('purchased', storeRef.purchased)
+provide('onKupit', store.onKupit)
+provide('sum', storeRef.sum)
 </script>
 
 <template>
