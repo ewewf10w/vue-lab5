@@ -1,22 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import { useReactionButton } from '@/composables/useReactionButton'
 
 const props = defineProps({
   like: Number,
 })
 
-const count = ref(props.like)
-const isActive = ref(false)
-
-const handleClick = () => {
-  if (isActive.value) {
-    count.value--
-    isActive.value = false
-  } else {
-    count.value++
-    isActive.value = true
-  }
-}
+const { count, isActive, handleClick } = useReactionButton(props.like)
 </script>
 <template>
   <div
