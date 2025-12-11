@@ -1,9 +1,10 @@
 <script setup>
-defineProps({
-  count: Number,
-  user: Object,
-  name: String,
-})
+import { inject } from 'vue'
+
+const product = inject('product')
+const user = product.user
+const count = product.collection_medias.length
+const name = product.name
 </script>
 <template>
   <div class="text-sm">
