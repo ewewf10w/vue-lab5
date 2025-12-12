@@ -1,17 +1,16 @@
 <script setup>
-import { provide } from 'vue'
+// import { provide } from 'vue'
 import FeedNode from './Feed/FeedNode.vue'
 import HeaderApp from './HeaderApp.vue'
 import { useProductsStore } from './store/prodects'
 import { storeToRefs } from 'pinia'
 
 const store = useProductsStore()
-const storeRef = storeToRefs(store)
-const products = storeRef.products
+const { products } = storeToRefs(store)
 
-provide('purchased', storeRef.purchased)
-provide('onKupit', store.onKupit)
-provide('sum', storeRef.sum)
+// provide('purchased', storeRef.purchased)
+// provide('onKupit', store.onKupit)
+// provide('sum', storeRef.sum)
 </script>
 
 <template>

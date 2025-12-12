@@ -71,7 +71,7 @@ export const useProductsStore = defineStore('products', () => {
   const onKupit = (id) => {
     const product = products.value.find((i) => i.id == id)
     purchased.value.push({ ...product })
-    console.log(sum.value)
+    // console.log(sum.value)
   }
 
   const sum = computed(() => purchased.value.reduce((total, product) => total + product.price, 0))
